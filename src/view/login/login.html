@@ -1,0 +1,200 @@
+<!-- angular 自带验证 -->
+<!-- 登录注册 start -->
+<!-- 背景框 -->
+<!-- <div class="login-po-mask" style="display: none;" ng-controller="loginCtr">
+    登录框
+    <div class="login-box" style="display: none;" id="login-box">
+        <form name="loginForm">
+            <div class="login-common">
+                <a class="close-btn close-btn-x" ng-click="closeLogin()">x</a>
+                <h1>登录唯见</h1>
+                手机号验证
+                <div class="error" ng-show="loginForm.loginPhone.$invalid && loginForm.loginPhone.$dirty">
+                    <span ng-show="loginForm.loginPhone.$error.pattern">手机号错误</span>
+                    <span ng-show="loginForm.loginPhone.$error.required">手机号必填</span>
+                </div>
+                <div class="login-box">
+                    <span class="user-icon"></span>
+                    <input type="text" placeholder="请输入手机号码" name="loginPhone" ng-minlength="6" ng-maxlength="11" required ng-pattern="validRegex.Regex_Mobile" ng-model="loginPhone" />
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="text" placeholder="请输入密码" name="loginPassword" maxlength="6" required ng-pattern="validRegex.Regex_EnghlishNum" ng-model="loginPassword">
+                </div>
+                <div class="login-com-pow">
+                    <input type="checkbox">
+                    <span>30天内自动登录</span>
+                    <span class="forget-pwd" ng-click="forget()">忘记密码</span>
+                </div>
+                <div class="btn-box">
+                    <button class="btn-login" validation-submit="loginForm" ng-click="loginSubmit()">登录</button>
+                </div>
+                <div class="login-com-pow-reget">
+                    <a href="#" class="reget-login-btn" ng-click="reget()">立即注册</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    注册框
+    <div class="login-box" style="display: none;" id="reget-box">
+        <form>
+            <div class="login-common">
+                <a class="close-btn close-btn-x" ng-click="closeLogin()">x</a>
+                <h1>注册唯见</h1>
+                <div class="login-box">
+                    <span class="user-icon"></span>
+                    <input type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="text" placeholder="请输入密码">
+                </div>
+                <div class="login-box">
+                    <input type="text" placeholder="请输入验证码" class="reget-code">
+                    <i class="getCode">获取验证码</i>
+                </div>
+                <div class="login-com-pow">
+                    <input type="checkbox">
+                    <a href="#" class="agreement">我已阅读并同意《唯见科技注册协议》</a>
+                </div>
+                <div class="btn-box">
+                    <button class="btn-login">注册</button>
+                </div>
+                <div class="login-com-pow-reget">
+                    <i>已有账号？</i><a href="#" class="reget-login-btn" ng-click="login()">立即登录</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    忘记密码
+    <div class="login-box" style="display: none;" id="forget-box">
+        <form>
+            <div class="login-common">
+                <a class="close-btn close-btn-x" ng-click="closeLogin()">x</a>
+                <h1>忘记密码</h1>
+                <div class="login-box">
+                    <span class="user-icon"></span>
+                    <input type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="text" placeholder="请输入密码">
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="text" placeholder="请再次输入密码">
+                </div>
+                <div class="login-box">
+                    <input type="text" placeholder="请输入验证码" class="reget-code">
+                    <i class="getCode">获取验证码</i>
+                </div>
+                <div class="btn-box">
+                    <button class="btn-login">提交</button>
+                </div>
+                <div class="login-com-pow-reget">
+                    <i>已有账号？</i><a href="#" class="reget-login-btn" ng-click="login()">立即登录</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div> -->
+
+<!-- angular JS 控制 -->
+<!-- 登录注册 start -->
+<!-- 背景框 -->
+<div class="login-po-mask" style="display: none;" ng-controller="loginCtr">
+    <!-- 登录框 -->
+    <div class="login-box" style="display: none;" id="login-box">
+        <form name="loginForm" novalidate>
+            <div class="login-common">
+                <a class="close-btn close-btn-x" ng-click="closeLogin()">x</a>
+                <h1>登录唯见</h1>
+                <!-- 手机号验证 -->
+                <div class="error" ng-show="errorBox">
+                   {{errorMsg}}
+                </div>
+                <div class="login-box">
+                    <span class="user-icon"></span>
+                    <input type="text" placeholder="请输入手机号码" name="loginPhone" maxlength="11" required ng-model="loginPhone" ng-keyup="hideerrorBox()"/>
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="password" placeholder="请输入密码" name="loginPassword" minlength="1" maxlength="20" required ng-model="loginPassword" ng-keyup="hideerrorBox()">
+                </div>
+                <div class="login-com-pow">
+                    <input type="checkbox">
+                    <span>30天内自动登录</span>
+                    <span class="forget-pwd" ng-click="forget()">忘记密码</span>
+                </div>
+                <div class="btn-box">
+                    <button class="btn-login" ng-click="loginSubmit()">登录</button>
+                </div>
+                <div class="login-com-pow-reget">
+                    <a href="#" class="reget-login-btn" ng-click="reget()">立即注册</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 注册框 -->
+    <div class="login-box" style="display: none;" id="reget-box">
+        <form>
+            <div class="login-common">
+                <a class="close-btn close-btn-x" ng-click="closeLogin()">x</a>
+                <h1>注册唯见</h1>
+                <div class="login-box">
+                    <span class="user-icon"></span>
+                    <input type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="text" placeholder="请输入密码">
+                </div>
+                <div class="login-box">
+                    <input type="text" placeholder="请输入验证码" class="reget-code">
+                    <i class="getCode">获取验证码</i>
+                </div>
+                <div class="login-com-pow">
+                    <input type="checkbox">
+                    <a href="#" class="agreement">我已阅读并同意《唯见科技注册协议》</a>
+                </div>
+                <div class="btn-box">
+                    <button class="btn-login">注册</button>
+                </div>
+                <div class="login-com-pow-reget">
+                    <i>已有账号？</i><a href="#" class="reget-login-btn" ng-click="login()">立即登录</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 忘记密码 -->
+    <div class="login-box" style="display: none;" id="forget-box">
+        <form>
+            <div class="login-common">
+                <a class="close-btn close-btn-x" ng-click="closeLogin()">x</a>
+                <h1>忘记密码</h1>
+                <div class="login-box">
+                    <span class="user-icon"></span>
+                    <input type="text" placeholder="请输入手机号码">
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="text" placeholder="请输入密码">
+                </div>
+                <div class="login-box">
+                    <span class="tel-icon"></span>
+                    <input type="text" placeholder="请再次输入密码">
+                </div>
+                <div class="login-box">
+                    <input type="text" placeholder="请输入验证码" class="reget-code">
+                    <i class="getCode">获取验证码</i>
+                </div>
+                <div class="btn-box">
+                    <button class="btn-login">提交</button>
+                </div>
+                <div class="login-com-pow-reget">
+                    <i>已有账号？</i><a href="#" class="reget-login-btn" ng-click="login()">立即登录</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
